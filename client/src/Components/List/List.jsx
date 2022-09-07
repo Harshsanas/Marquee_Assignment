@@ -78,7 +78,7 @@ export default function List() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/companyname")
+      .get("http://localhost:5000/addedcompany")
       .then((res) => {
         setList(res.data.rows);
         console.log(res.data.rows);

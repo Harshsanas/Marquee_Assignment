@@ -15,7 +15,16 @@ const pool = new Pool({
 app.use(express.json());
 app.use(cors());
 
-//to get all company names
+// app.get("/companyname", async(req,res)=>{
+//     try{
+//         const allCompanyNames = await pool.query("SELECT * FROM company");
+//         res.json(allCompanyNames);
+//         console.log(allCompanyNames)
+//     }catch(err){
+//         console.log(err);
+//     }
+// })
+
 app.get("/companyname", async (req, res) => {
   try {
     const allCompanyNames = await pool.query("SELECT * FROM company");
@@ -24,6 +33,31 @@ app.get("/companyname", async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+});
+
+app.get("/addedcompany", async (req, res) => {
+  try {
+    const allCompanyNames = await pool.query("SELECT * FROM companylist");
+    res.json(allCompanyNames);
+    console.log(allCompanyNames);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+
+app.post("/addcompany", async (req, response) => {try {
+  const {cname} = req.body
+  const companyListName = await pool.query("INSERT INTO companylist(cname) VALUES(?) RETURNING *",[cname],(err,res)=>{
+    if(err){
+      throw err
+    }
+  });
+  res.json(companyListName);
+  console.log(companyListName);
+} catch (err) {
+  console.log(err);
+}
 });
 
 app.listen(5000, () => {
