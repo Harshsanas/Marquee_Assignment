@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid purple;
+}
+
+
+.dropdown-row {
+  cursor: pointer;
+  text-align: start;
+  margin: 10px 0;
+}
+
+.search-inner {
+  display: flex;
+}
+
+.random-div{
+  margin:300px 300px;
+  font-size: 50px;
+  font-weight: 600;
+
+}
